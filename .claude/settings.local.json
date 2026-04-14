@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start \"\" \"C:/Users/user/AppData/Local/GitHubDesktop/app-*/GitHubDesktop.exe\" --open-repo \"C:/Users/user/Desktop/マイ ドキュメント&スキャナー/GitHub/mysite\")"
+    ]
+  }
+}
