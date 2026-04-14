@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ふくろうの台所 ～糀のある暮らし～ | 富山・発酵教室</title>
+  <meta name="description" content="上級麹士・薬膳麹士が富山で開く発酵教室。定員6名の少人数制でランチ＆お持ち帰り付き。麹体験講座¥4,500〜。40〜60代女性に人気。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    /* ===== CSS変数 ===== */
+    :root {
+      --primary: #C96B3C;
+      --primary-dark: #A04E25;
+      --primary-light: #E8956A;
+      --accent: #7A9E6B;
+      --accent-dark: #5A7E4E;
+      --bg: #FDF9F2;
+      --bg-dark: #F5EDE0;
+      --bg-card: #FFFDF9;
+      --white: #FFFFFF;
+      --text: #2C1F18;
+      --text-muted: #8B6E5A;
+      --border: rgba(201, 107, 60, 0.14);
+      --shadow: 0 4px 24px rgba(201, 107, 60, 0.1);
+      --shadow-lg: 0 12px 48px rgba(201, 107, 60, 0.15);
+      --radius: 20px;
+      --radius-sm: 10px;
+      --radius-xs: 6px;
+    }
+
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== Scroll Progress Bar ===== */
+    .scroll-bar {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      z-index: 999;
+      transition: width 0.1s;
+    }
+
+    /* ===== Navigation ===== */
+    #mainNav {
+      position: fixed; top: 3px; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
+    }
+    #mainNav.scrolled {
+      background: rgba(253, 249, 242, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(201, 107, 60, 0.1);
+      padding: 14px 40px;
+    }
+    .nav-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--white);
+      transition: color 0.3s;
+      line-height: 1.5;
+    }
+    #mainNav.scrolled .nav-logo { color: var(--text); }
+    .nav-logo .sub { color: rgba(255,255,255,0.7); font-weight: 400; font-size: 0.78rem; display: block; }
+    #mainNav.scrolled .nav-logo .sub { color: var(--text-muted); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.82);
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    #mainNav.scrolled .nav-links a { color: var(--text-muted); }
+    .nav-links a:hover { color: var(--white); }
+    #mainNav.scrolled .nav-links a:hover { color: var(--primary); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 22px; border-radius: 50px;
+      background: var(--primary); color: var(--white);
+      font-size: 0.85rem; font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 3px 12px rgba(201, 107, 60, 0.4);
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201, 107, 60, 0.5); }
+    .nav-cta .material-icons { font-size: 15px; }
+    .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: background 0.3s; border-radius: 2px; }
+    #mainNav.scrolled .hamburger span { background: var(--text); }
+
+    /* ===== Section Common ===== */
+    section { padding: 96px 0; }
+    .inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em;
+      color: var(--primary); text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.55rem, 3.2vw, 2.3rem);
+      font-weight: 700; line-height: 1.5;
+      margin-bottom: 20px;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+    .section-title .hl { color: var(--primary); }
+    .section-lead {
+      font-size: 0.98rem; color: var(--text-muted);
+      line-height: 1.95; max-width: 580px;
+    }
+    .section-lead.center { margin: 0 auto; text-align: center; }
+    .text-center { text-align: center; }
+
+    /* ===== Scroll Animation ===== */
+    .fi {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fi.visible { opacity: 1; transform: translateY(0); }
+    .fi.delay-1 { transition-delay: 0.1s; }
+    .fi.delay-2 { transition-delay: 0.22s; }
+    .fi.delay-3 { transition-delay: 0.34s; }
+    .fi.delay-4 { transition-delay: 0.46s; }
+
+    /* ===== Wave ===== */
+    .wave { line-height: 0; }
+    .wave svg { display: block; width: 100%; height: 70px; }
+
+    /* ===== Buttons ===== */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 18px 44px; border-radius: 50px;
+      background: var(--primary); color: var(--white);
+      font-size: 1rem; font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 28px rgba(201, 107, 60, 0.4);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(201, 107, 60, 0.5); }
+    .btn-outline-light {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 36px; border-radius: 50px;
+      background: transparent; color: rgba(255,255,255,0.85);
+      font-size: 0.95rem; font-weight: 600;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      transition: all 0.2s;
+    }
+    .btn-outline-light:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.7); }
+
+    /* ===========================
+       HERO
+    =========================== */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      background: linear-gradient(135deg, #3D1F0E 0%, #6B3520 45%, #C96B3C 100%);
+      position: relative; overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(90px); opacity: 0.16;
+      animation: blobFloat 10s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-blob-1 { width: 520px; height: 520px; background: #E8A87A; top: -120px; right: -100px; animation-delay: 0s; }
+    .hero-blob-2 { width: 360px; height: 360px; background: #F5D4B0; bottom: -60px; left: 8%; animation-delay: -3.5s; }
+    .hero-blob-3 { width: 260px; height: 260px; background: #7A9E6B; top: 35%; right: 22%; opacity: 0.10; animation-delay: -7s; }
+    @keyframes blobFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-22px) scale(1.04); }
+    }
+    .hero-ring {
+      position: absolute; border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 50%; pointer-events: none;
+      animation: ringRotate 40s linear infinite;
+    }
+    .hero-ring-1 { width: 700px; height: 700px; top: -250px; right: -200px; }
+    .hero-ring-2 { width: 450px; height: 450px; bottom: -180px; right: 8%; animation-direction: reverse; animation-duration: 55s; }
+    @keyframes ringRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: grid; grid-template-columns: 1fr 480px; gap: 60px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 7px 18px; border-radius: 50px;
+      color: rgba(255,255,255,0.88); font-size: 0.8rem; font-weight: 500;
+      margin-bottom: 28px;
+    }
+    .hero-badge .material-icons { font-size: 14px; color: #F0C080; }
+    .hero-h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.85rem, 4.2vw, 3.1rem);
+      font-weight: 700; line-height: 1.55;
+      color: var(--white);
+      margin-bottom: 28px;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+    .hero-h1 .hl { color: #F5D4A0; }
+    .hero-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.72);
+      line-height: 1.95; margin-bottom: 44px;
+    }
+    .hero-cta-group { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+    /* Hero Visual: CSS fermentation illustration */
+    .hero-visual { position: relative; height: 420px; }
+    .ferment-bg {
+      width: 340px; height: 340px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+      position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+      animation: morphShape 12s ease-in-out infinite;
+    }
+    @keyframes morphShape {
+      0%, 100% { border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%; }
+      50% { border-radius: 55% 45% 40% 60% / 50% 55% 45% 50%; }
+    }
+    .jar {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+      width: 160px;
+    }
+    .jar-body {
+      width: 120px; height: 140px;
+      background: linear-gradient(160deg, rgba(232,149,106,0.6), rgba(201,107,60,0.4));
+      border: 1.5px solid rgba(255,255,255,0.25);
+      border-radius: 12px 12px 20px 20px;
+      margin: 0 auto; position: relative;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 12px 40px rgba(100,30,10,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    .jar-neck {
+      width: 68px; height: 24px;
+      background: linear-gradient(160deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08));
+      border: 1.5px solid rgba(255,255,255,0.22);
+      border-radius: 6px 6px 0 0;
+      margin: 0 auto;
+    }
+    .jar-lid {
+      width: 80px; height: 16px;
+      background: linear-gradient(160deg, #C96B3C, #A04E25);
+      border-radius: 6px 6px 2px 2px;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgba(100,30,10,0.4);
+    }
+    .jar-content {
+      position: absolute; bottom: 12px; left: 10px; right: 10px; height: 60px;
+      background: linear-gradient(180deg, rgba(122,158,107,0.6), rgba(90,126,78,0.8));
+      border-radius: 6px 6px 14px 14px;
+    }
+    .jar-shine {
+      position: absolute; top: 12px; left: 14px;
+      width: 20px; height: 50px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.25), transparent);
+      border-radius: 10px;
+    }
+    .jar-label {
+      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      background: rgba(255,255,255,0.92); border-radius: 4px; padding: 3px 10px;
+      font-size: 0.7rem; font-weight: 700; color: var(--text);
+      white-space: nowrap;
+    }
+    .steam-wrap {
+      position: absolute; bottom: 210px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 10px;
+    }
+    .steam {
+      width: 3px; border-radius: 4px;
+      background: linear-gradient(to top, rgba(255,255,255,0.35), transparent);
+      animation: steamUp 2.8s ease-in-out infinite;
+    }
+    .steam:nth-child(1) { height: 40px; animation-delay: 0s; }
+    .steam:nth-child(2) { height: 28px; animation-delay: -0.9s; margin-top: 12px; }
+    .steam:nth-child(3) { height: 36px; animation-delay: -1.8s; }
+    @keyframes steamUp {
+      0%, 100% { opacity: 0.5; transform: translateY(0) scaleX(1); }
+      50% { opacity: 0.12; transform: translateY(-14px) scaleX(1.8); }
+    }
+    /* Floating info chips */
+    .chip {
+      position: absolute;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+      border-radius: 12px; padding: 10px 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .chip-icon { font-size: 20px; }
+    .chip-text { font-size: 0.78rem; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .chip-sub { font-size: 0.68rem; color: var(--text-muted); font-weight: 400; }
+    .chip-1 { top: 20px; right: 10px; animation: chipFloat 4s ease-in-out infinite; }
+    .chip-2 { top: 120px; left: 0; animation: chipFloat 4.5s ease-in-out infinite; animation-delay: -2s; }
+    .chip-3 { bottom: 10px; right: 0; animation: chipFloat 5s ease-in-out infinite; animation-delay: -1s; }
+    @keyframes chipFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Hero scroll hint */
+    .hero-scroll {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: rgba(255,255,255,0.45); font-size: 0.7rem; letter-spacing: 0.15em;
+      z-index: 2; pointer-events: none;
+    }
+    .hero-scroll .material-icons { animation: scrollBounce 2s ease-in-out infinite; }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.45; }
+      50% { transform: translateY(7px); opacity: 0.9; }
+    }
+
+    /* ===========================
+       PROBLEM
+    =========================== */
+    #problem { background: var(--white); }
+    .problem-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-top: 48px;
+    }
+    .problem-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .problem-card::before {
+      content: '"';
+      position: absolute; top: -8px; right: 16px;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 5.5rem; color: var(--primary); opacity: 0.07;
+      line-height: 1; pointer-events: none;
+    }
+    .problem-icon {
+      width: 54px; height: 54px;
+      background: var(--bg-dark);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .problem-icon .material-icons { font-size: 28px; color: var(--primary); }
+    .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; line-height: 1.6; }
+    .problem-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.85; }
+    .problem-bridge {
+      margin-top: 52px; text-align: center;
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-weight: 600; color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .problem-bridge strong { color: var(--primary); }
+
+    /* ===========================
+       ABOUT
+    =========================== */
+    #about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 400px 1fr; gap: 72px; align-items: center; }
+    .about-visual-col { position: relative; }
+    .about-shape {
+      width: 100%; padding-bottom: 108%;
+      background: linear-gradient(145deg, #E8A87A 0%, #C96B3C 55%, #8B3A1A 100%);
+      border-radius: 42% 58% 58% 42% / 42% 42% 58% 58%;
+      position: relative; overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .about-shape-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+    .about-shape-circle {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    }
+    .asc-1 { width: 130px; height: 130px; top: 18%; left: 12%; }
+    .asc-2 { width: 80px; height: 80px; bottom: 18%; right: 16%; }
+    .about-float {
+      position: absolute;
+      background: var(--white);
+      border-radius: 16px; padding: 14px 18px;
+      box-shadow: var(--shadow-lg);
+    }
+    .af-1 {
+      bottom: -18px; left: -18px;
+      font-size: 0.82rem; color: var(--text);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .af-1 .material-icons { font-size: 22px; color: var(--primary); }
+    .af-1-num { font-size: 1.5rem; font-weight: 700; color: var(--primary); line-height: 1; }
+    .af-1-label { font-size: 0.72rem; color: var(--text-muted); }
+    .af-2 {
+      top: -14px; right: -14px;
+      text-align: center; font-size: 0.78rem; color: var(--text);
+    }
+    .af-2 .material-icons { font-size: 22px; color: var(--accent); display: block; margin-bottom: 4px; }
+    .about-content-col {}
+    .about-story {
+      font-size: 1rem; line-height: 2;
+      color: var(--text); margin-bottom: 20px;
+    }
+    .about-story strong { color: var(--primary); font-weight: 700; }
+    .about-certs {
+      display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0;
+    }
+    .cert-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 50px; padding: 7px 16px;
+      font-size: 0.8rem; font-weight: 500; color: var(--text-muted);
+    }
+    .cert-chip .material-icons { font-size: 14px; color: var(--accent); }
+    .about-profile {
+      margin-top: 28px; padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 16px;
+    }
+    .profile-icon {
+      width: 52px; height: 52px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .profile-icon .material-icons { font-size: 26px; color: var(--white); }
+    .profile-name { font-size: 1.1rem; font-weight: 700; }
+    .profile-title { font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; }
+
+    /* ===========================
+       FEATURES
+    =========================== */
+    #features { background: var(--white); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 52px; }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .feature-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .feature-card:hover::after { opacity: 1; }
+    .feature-num {
+      position: absolute; top: 18px; right: 20px;
+      font-size: 3rem; font-weight: 700;
+      color: var(--primary); opacity: 0.055; line-height: 1;
+    }
+    .feature-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--bg-dark), var(--bg));
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+    }
+    .feature-icon .material-icons { font-size: 32px; color: var(--primary); }
+    .feature-card h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 12px; }
+    .feature-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.9; }
+
+    /* ===========================
+       SERVICES
+    =========================== */
+    #services { background: var(--bg); }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 52px; }
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid var(--border);
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .service-card.featured {
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 0 1px var(--primary), var(--shadow);
+    }
+    .service-rec {
+      position: absolute; top: -1px; right: 24px;
+      background: var(--primary); color: var(--white);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+      padding: 4px 14px; border-radius: 0 0 10px 10px;
+    }
+    .service-badge {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      padding: 4px 14px; border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .b-entry { background: #E8F5E2; color: #3D6B2D; }
+    .b-main  { background: #FEF0E6; color: var(--primary-dark); }
+    .b-special { background: #FFF8DC; color: #8A6900; }
+    .b-master { background: #FCE4EC; color: #AD1457; }
+    .service-card h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.22rem; font-weight: 700; margin-bottom: 10px;
+    }
+    .service-price {
+      font-size: 1.75rem; font-weight: 700; color: var(--primary);
+      margin: 14px 0; line-height: 1.2;
+    }
+    .service-price span { font-size: 0.88rem; color: var(--text-muted); font-weight: 400; }
+    .service-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 18px; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .s-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: var(--bg); border-radius: 50px;
+      padding: 5px 13px; font-size: 0.78rem; color: var(--text-muted);
+    }
+    .s-tag .material-icons { font-size: 13px; color: var(--primary); }
+
+    /* ===========================
+       FLOW
+    =========================== */
+    #flow { background: var(--white); }
+    .flow-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; margin-top: 60px; position: relative;
+    }
+    .flow-grid::before {
+      content: '';
+      position: absolute; top: 50px;
+      left: calc(100% / 6); right: calc(100% / 6);
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-light), var(--accent));
+      z-index: 0;
+    }
+    .flow-step { text-align: center; padding: 0 28px; position: relative; z-index: 1; }
+    .flow-circle {
+      width: 100px; height: 100px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      margin: 0 auto 28px;
+      box-shadow: 0 8px 28px rgba(201, 107, 60, 0.38);
+    }
+    .flow-step-lbl { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(255,255,255,0.75); }
+    .flow-step-n { font-size: 1.4rem; font-weight: 700; color: var(--white); line-height: 1; }
+    .flow-step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; line-height: 1.6; }
+    .flow-step p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.9; }
+    .flow-memo {
+      margin-top: 48px;
+      background: linear-gradient(135deg, var(--bg-dark), var(--bg));
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      border-left: 4px solid var(--accent);
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .flow-memo .material-icons { font-size: 24px; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+    .flow-memo p { font-size: 0.95rem; line-height: 1.9; }
+
+    /* ===========================
+       TESTIMONIALS
+    =========================== */
+    #testimonials { background: var(--bg); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .testi-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .testi-q-mark {
+      position: absolute; top: 12px; right: 20px;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 4rem; line-height: 1;
+      color: var(--primary); opacity: 0.1; pointer-events: none;
+    }
+    .testi-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .testi-stars .material-icons { font-size: 16px; color: #F5A623; }
+    .testi-text { font-size: 0.9rem; line-height: 1.9; margin-bottom: 22px; }
+    .testi-author {
+      display: flex; align-items: center; gap: 14px;
+      padding-top: 18px; border-top: 1px solid var(--border);
+    }
+    .testi-avatar {
+      width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.88rem; font-weight: 700; color: var(--white);
+    }
+    .av-a { background: linear-gradient(135deg, #E8956A, #C96B3C); }
+    .av-b { background: linear-gradient(135deg, #8BAA72, #5A7E4E); }
+    .av-c { background: linear-gradient(135deg, #C4A26A, #8B6B3A); }
+    .testi-name { font-size: 0.9rem; font-weight: 700; }
+    .testi-attr { font-size: 0.77rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* ===========================
+       FAQ
+    =========================== */
+    #faq { background: var(--white); }
+    .faq-wrap { margin-top: 48px; max-width: 760px; margin-left: auto; margin-right: auto; display: flex; flex-direction: column; gap: 16px; }
+    .faq-item {
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 20px 24px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .faq-q-icon {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: var(--primary); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700; margin-top: 1px;
+    }
+    .faq-q-text { font-size: 0.95rem; font-weight: 700; flex: 1; line-height: 1.6; }
+    .faq-a {
+      padding: 0 24px 20px;
+      padding-left: 66px;
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.9;
+    }
+
+    /* ===========================
+       CTA
+    =========================== */
+    #cta { padding: 0; }
+    .cta-wave { line-height: 0; }
+    .cta-wave svg { display: block; width: 100%; height: 70px; }
+    .cta-body {
+      background: linear-gradient(135deg, #3D1F0E 0%, #6B3520 50%, #C96B3C 100%);
+      padding: 88px 0 108px; position: relative; overflow: hidden;
+    }
+    .cta-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(70px); opacity: 0.14; pointer-events: none;
+    }
+    .cta-blob-1 { width: 420px; height: 420px; background: #F5D4A0; top: -100px; right: -60px; }
+    .cta-blob-2 { width: 320px; height: 320px; background: #7A9E6B; bottom: -80px; left: 4%; }
+    .cta-inner {
+      max-width: 680px; margin: 0 auto; padding: 0 24px;
+      text-align: center; position: relative; z-index: 2;
+    }
+    .cta-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em;
+      color: rgba(255,255,255,0.45); text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .cta-h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.55rem, 3.8vw, 2.5rem);
+      font-weight: 700; color: var(--white); line-height: 1.6;
+      margin-bottom: 22px;
+      word-break: keep-all; overflow-wrap: anywhere;
+    }
+    .cta-h2 .hl { color: #F5D4A0; }
+    .cta-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.68);
+      line-height: 1.95; margin-bottom: 44px;
+    }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 20px 56px; border-radius: 50px;
+      background: var(--white); color: var(--primary);
+      font-size: 1.05rem; font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 36px rgba(0,0,0,0.2);
+    }
+    .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 16px 52px rgba(0,0,0,0.28); }
+    .cta-note { margin-top: 20px; font-size: 0.8rem; color: rgba(255,255,255,0.42); }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    footer { background: #1C0E08; padding: 56px 0 32px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .footer-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 48px; flex-wrap: wrap;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--primary-light); }
+    .footer-desc { font-size: 0.82rem; color: rgba(255,255,255,0.38); line-height: 1.9; max-width: 260px; }
+    .footer-col-title {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.35); text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 0.84rem; color: rgba(255,255,255,0.48); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--primary-light); }
+    .footer-bottom {
+      padding-top: 28px; text-align: center;
+      font-size: 0.78rem; color: rgba(255,255,255,0.22);
+    }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .hero-h1 { text-align: center; font-size: clamp(1.7rem, 5vw, 2.4rem); }
+      .hero-sub { text-align: center; }
+      .hero-badge { margin-left: auto; margin-right: auto; display: inline-flex; }
+      .hero-cta-group { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual-col { display: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .flow-grid { grid-template-columns: 1fr; gap: 36px; }
+      .flow-grid::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 64px 0; }
+      #mainNav { padding: 16px 20px; }
+      #mainNav.scrolled { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .problem-cards { grid-template-columns: 1fr; }
+      .footer-top { flex-direction: column; gap: 32px; }
+    }
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 1.65rem; }
+      .btn-primary { padding: 16px 32px; font-size: 0.95rem; }
+      .btn-cta { padding: 16px 36px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-bar" id="scrollBar"></div>
+
+<!-- Navigation -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    ふくろうの台所
+    <span class="sub">～糀のある暮らし～</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">教室について</a></li>
+    <li><a href="#services">講座一覧</a></li>
+    <li><a href="#flow">体験の流れ</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">
+    <span class="material-icons">calendar_month</span>
+    予約する
+  </a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="hero-ring hero-ring-1"></div>
+  <div class="hero-ring hero-ring-2"></div>
+
+  <div class="hero-inner">
+    <!-- Left: Text -->
+    <div class="hero-content">
+      <div class="hero-badge fi">
+        <span class="material-icons">eco</span>
+        富山・発酵教室 ／ 定員6名の少人数制
+      </div>
+      <h1 class="hero-h1 fi delay-1">
+        <span class="hl">発酵のある暮らしで</span><br>あなたの日常を<br>整えませんか？
+      </h1>
+      <p class="hero-sub fi delay-2">麹・発酵食の知恵を、毎日の食卓へ。上級麹士・薬膳麹士が丁寧に伝える、小さな発酵教室へようこそ。</p>
+      <div class="hero-cta-group fi delay-3">
+        <a href="#cta" class="btn-primary">
+          <span class="material-icons">calendar_month</span>
+          次回レッスンを予約する
+        </a>
+        <a href="#services" class="btn-outline-light">
+          <span class="material-icons" style="font-size:18px">expand_more</span>
+          講座を見る
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Visual -->
+    <div class="hero-visual fi delay-2">
+      <div class="ferment-bg"></div>
+      <!-- Jar illustration -->
+      <div class="jar">
+        <div class="steam-wrap">
+          <div class="steam"></div>
+          <div class="steam"></div>
+          <div class="steam"></div>
+        </div>
+        <div class="jar-lid"></div>
+        <div class="jar-neck"></div>
+        <div class="jar-body">
+          <div class="jar-content"></div>
+          <div class="jar-shine"></div>
+          <div class="jar-label">塩麹</div>
+        </div>
+      </div>
+      <!-- Floating chips -->
+      <div class="chip chip-1">
+        <span class="material-icons chip-icon" style="color:var(--primary)">workspace_premium</span>
+        <div class="chip-text">上級麹士<div class="chip-sub">薬膳麹士</div></div>
+      </div>
+      <div class="chip chip-2">
+        <span class="material-icons chip-icon" style="color:var(--accent)">groups</span>
+        <div class="chip-text">定員6名<div class="chip-sub">少人数制</div></div>
+      </div>
+      <div class="chip chip-3">
+        <span class="material-icons chip-icon" style="color:#F5A623">lunch_dining</span>
+        <div class="chip-text">ランチ付き<div class="chip-sub">お持ち帰りあり</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <span class="material-icons">expand_more</span>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:var(--bg)">
+  <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,35 C240,70 480,5 720,35 C960,65 1200,10 1440,35 L1440,70 L0,70 Z" fill="var(--white)"/>
+  </svg>
+</div>
+
+<!-- ===== PROBLEM ===== -->
+<section id="problem">
+  <div class="inner">
+    <div class="text-center fi">
+      <p class="section-eyebrow">Problem</p>
+      <h2 class="section-title">こんな気持ち、<span class="hl">ありませんか？</span></h2>
+    </div>
+    <div class="problem-cards">
+      <div class="problem-card fi delay-1">
+        <div class="problem-icon"><span class="material-icons">self_improvement</span></div>
+        <h3>「体の変化が気になりはじめた」</h3>
+        <p>40代に入ってから疲れやすくなったり、お腹の調子が不安定になったり。食事を変えたいけれど、何から始めればいいか分からない。</p>
+      </div>
+      <div class="problem-card fi delay-2">
+        <div class="problem-icon"><span class="material-icons">menu_book</span></div>
+        <h3>「発酵食品、気になるけど続かない」</h3>
+        <p>本やネットで調べてみたものの、なんとなく難しそう。一人で仕込んでみたけれど、途中で挫折してしまった経験がある。</p>
+      </div>
+      <div class="problem-card fi delay-3">
+        <div class="problem-icon"><span class="material-icons">favorite_border</span></div>
+        <h3>「丁寧な暮らし、憧れはある」</h3>
+        <p>発酵食のある日常を送りたいけれど、忙しくてなかなか実践できない。仲間と一緒なら続けられる気がするのに。</p>
+      </div>
+    </div>
+    <p class="problem-bridge fi">そんなあなたのために、<strong>ふくろうの台所</strong>があります。</p>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:var(--white)">
+  <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,35 C360,0 720,65 1080,25 C1200,10 1320,55 1440,35 L1440,70 L0,70 Z" fill="var(--bg)"/>
+  </svg>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="inner">
+    <div class="about-grid">
+      <!-- Visual -->
+      <div class="about-visual-col fi">
+        <div class="about-shape">
+          <div class="about-shape-dots"></div>
+          <div class="about-shape-circle asc-1"></div>
+          <div class="about-shape-circle asc-2"></div>
+        </div>
+        <div class="about-float af-1">
+          <span class="material-icons">restaurant</span>
+          <div>
+            <div class="af-1-num">20+</div>
+            <div class="af-1-label">年の料理歴</div>
+          </div>
+        </div>
+        <div class="about-float af-2">
+          <span class="material-icons">workspace_premium</span>
+          上級麹士
+        </div>
+      </div>
+      <!-- Content -->
+      <div class="about-content-col fi delay-2">
+        <p class="section-eyebrow">About</p>
+        <h2 class="section-title">「食に<span class="hl">2度、救われた</span>」<br>実体験から生まれた教室</h2>
+        <p class="about-story">蕎麦アレルギーがきっかけで体を壊したとき、発酵食が私を救ってくれました。<strong>2度体を壊し、2度食に救われた</strong>——その実体験が、この教室のすべての土台になっています。</p>
+        <p class="about-story">「先生から習った」ではなく、<strong>自分の体で感じた確かな知恵</strong>を、参加してくださる方に丁寧にお伝えしたい。福籠で10年培った「食で人を喜ばせる」技術と、発酵の力を組み合わせた場所です。</p>
+        <div class="about-certs">
+          <span class="cert-chip"><span class="material-icons">verified</span>発酵食大学 修了</span>
+          <span class="cert-chip"><span class="material-icons">verified</span>上級麹士</span>
+          <span class="cert-chip"><span class="material-icons">verified</span>薬膳麹士（取得中）</span>
+          <span class="cert-chip"><span class="material-icons">restaurant</span>料理歴20年以上</span>
+        </div>
+        <div class="about-profile">
+          <div class="profile-icon"><span class="material-icons">person</span></div>
+          <div>
+            <div class="profile-name">福澤 奈保子</div>
+            <div class="profile-title">ふくろうの台所 主宰 ／ 上級麹士・薬膳麹士</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:var(--bg)">
+  <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,20 C200,60 450,0 720,30 C990,60 1200,5 1440,40 L1440,70 L0,70 Z" fill="var(--white)"/>
+  </svg>
+</div>
+
+<!-- ===== FEATURES ===== -->
+<section id="features">
+  <div class="inner">
+    <div class="text-center fi">
+      <p class="section-eyebrow">Features</p>
+      <h2 class="section-title">ふくろうの台所が<span class="hl">選ばれる3つの理由</span></h2>
+      <p class="section-lead center">「難しそう」「続かない」を解消するために、3つのことを大切にしています。</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fi delay-1">
+        <div class="feature-num">01</div>
+        <div class="feature-icon"><span class="material-icons">groups</span></div>
+        <h3>定員6名の少人数制</h3>
+        <p>一人ひとりに目が届く、アットホームな環境。質問しやすく、同じ想いを持つ仲間と学ぶことで、自然と習慣が身につきます。</p>
+      </div>
+      <div class="feature-card fi delay-2">
+        <div class="feature-num">02</div>
+        <div class="feature-icon"><span class="material-icons">lunch_dining</span></div>
+        <h3>ランチ＆お持ち帰り付き</h3>
+        <p>その日仕込んだ麹で作ったランチを教室でいただき、3種の麹調味料をお持ち帰り。「自分で作れた」体験が次への自信になります。</p>
+      </div>
+      <div class="feature-card fi delay-3">
+        <div class="feature-num">03</div>
+        <div class="feature-icon"><span class="material-icons">spa</span></div>
+        <h3>初心者さんでも安心</h3>
+        <p>麹や発酵食がまったく初めての方も大歓迎。難しい知識は不要です。「なぜそうなるの？」という疑問にも丁寧に答えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:var(--white)">
+  <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,40 C300,70 600,10 900,40 C1080,60 1260,20 1440,45 L1440,70 L0,70 Z" fill="var(--bg)"/>
+  </svg>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="inner">
+    <div class="text-center fi">
+      <p class="section-eyebrow">Services</p>
+      <h2 class="section-title">あなたのペースで<span class="hl">選べる4つの講座</span></h2>
+      <p class="section-lead center">体験から習慣化、さらに深みへ。ステップアップしながら学べる講座設計です。</p>
+    </div>
+    <div class="services-grid">
+      <!-- 麹体験講座 -->
+      <div class="service-card fi delay-1">
+        <span class="service-badge b-entry">入口・単発OK</span>
+        <h3>麹体験講座</h3>
+        <p class="service-desc">塩麹・醤油麹・甘麹の3種を自分で仕込み、麹調味料ランチを楽しむ入門コース。「発酵って楽しい！」の体験からスタートできます。</p>
+        <div class="service-price">¥4,500<span> ／ 1回（約3時間）</span></div>
+        <div class="service-tags">
+          <span class="s-tag"><span class="material-icons">group</span>定員6名</span>
+          <span class="s-tag"><span class="material-icons">calendar_month</span>月2回</span>
+          <span class="s-tag"><span class="material-icons">lunch_dining</span>ランチ付き</span>
+          <span class="s-tag"><span class="material-icons">backpack</span>お持ち帰りあり</span>
+        </div>
+      </div>
+      <!-- 発酵習慣講座 -->
+      <div class="service-card featured fi delay-2">
+        <div class="service-rec">人気No.1</div>
+        <span class="service-badge b-main">継続・メインサービス</span>
+        <h3>発酵習慣講座</h3>
+        <p class="service-desc">6テーマ（麹調味料・腸活・発酵ドリンク・ベジみそ・発酵パン・季節の発酵）を体系的に学ぶコース。発酵弁当＆デザート付き。全6回修了で修了証授与。</p>
+        <div class="service-price">¥5,500<span> ／ 1回　全6回 ¥30,000</span></div>
+        <div class="service-tags">
+          <span class="s-tag"><span class="material-icons">group</span>定員6名</span>
+          <span class="s-tag"><span class="material-icons">calendar_month</span>月2回</span>
+          <span class="s-tag"><span class="material-icons">lunch_dining</span>発酵弁当付き</span>
+          <span class="s-tag"><span class="material-icons">workspace_premium</span>修了証あり</span>
+        </div>
+      </div>
+      <!-- 季節の発酵講座 -->
+      <div class="service-card fi delay-3">
+        <span class="service-badge b-special">特別・単発OK</span>
+        <h3>季節の発酵講座</h3>
+        <p class="service-desc">梅麹・発酵おせち・桜塩麹など、日本の季節と行事に合わせた発酵レッスン。年6回の特別な時間。受講経験不問で参加できます。</p>
+        <div class="service-price">¥6,000<span> ／ 1回</span></div>
+        <div class="service-tags">
+          <span class="s-tag"><span class="material-icons">group</span>定員6名</span>
+          <span class="s-tag"><span class="material-icons">event</span>2ヶ月に1回（年6回）</span>
+          <span class="s-tag"><span class="material-icons">lunch_dining</span>ランチ付き</span>
+        </div>
+      </div>
+      <!-- 発酵マスター集中講座 -->
+      <div class="service-card fi delay-4">
+        <span class="service-badge b-master">上級・修了者限定</span>
+        <h3>発酵マスター集中講座</h3>
+        <p class="service-desc">玄米麹・黒麹を3日間で深く学ぶ上級コース。発酵習慣講座6回修了者への先行案内で開催。3日間ランチ・修了証・麹のお持ち帰り付き。</p>
+        <div class="service-price">¥25,000<span> ／ 3日間</span></div>
+        <div class="service-tags">
+          <span class="s-tag"><span class="material-icons">group</span>定員6名</span>
+          <span class="s-tag"><span class="material-icons">event</span>年4回開催</span>
+          <span class="s-tag"><span class="material-icons">workspace_premium</span>修了証授与</span>
+          <span class="s-tag"><span class="material-icons">lock</span>修了者限定</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:var(--bg)">
+  <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,50 C180,20 400,65 700,35 C900,15 1200,55 1440,30 L1440,70 L0,70 Z" fill="var(--white)"/>
+  </svg>
+</div>
+
+<!-- ===== FLOW ===== -->
+<section id="flow">
+  <div class="inner">
+    <div class="text-center fi">
+      <p class="section-eyebrow">Flow</p>
+      <h2 class="section-title">体験当日の<span class="hl">3つのステップ</span></h2>
+      <p class="section-lead center">はじめての方も安心。麹体験講座の当日の流れです（約3時間）。</p>
+    </div>
+    <div class="flow-grid">
+      <div class="flow-step fi delay-1">
+        <div class="flow-circle">
+          <div class="flow-step-lbl">STEP</div>
+          <div class="flow-step-n">01</div>
+        </div>
+        <h3>麹のはなし ＆ 仕込み実習</h3>
+        <p>塩麹・醤油麹・甘麹の3種を順番に仕込みます。麹とは何かという基本から丁寧に説明するので、初心者さんでも安心です。</p>
+      </div>
+      <div class="flow-step fi delay-2">
+        <div class="flow-circle">
+          <div class="flow-step-lbl">STEP</div>
+          <div class="flow-step-n">02</div>
+        </div>
+        <h3>麹調味料ランチ</h3>
+        <p>仕込み完成品の麹で作った料理3〜4品をみんなでいただきます。「これ全部麹で作ったんですよ」という驚きと美味しさを体験。</p>
+      </div>
+      <div class="flow-step fi delay-3">
+        <div class="flow-circle">
+          <div class="flow-step-lbl">STEP</div>
+          <div class="flow-step-n">03</div>
+        </div>
+        <h3>熟成レクチャー ＆ お持ち帰り</h3>
+        <p>持ち帰り後の熟成管理・使い方・保存方法をレクチャー。仕込んだ3種の麹調味料とレシピカードをお持ち帰りいただけます。</p>
+      </div>
+    </div>
+    <div class="flow-memo fi">
+      <span class="material-icons">tips_and_updates</span>
+      <p>持ち帰った麹が完成する<strong>10〜14日後</strong>が、日常に発酵が根付く最初の一歩。「できました！」の喜びをぜひ味わってください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:var(--white)">
+  <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C300,65 600,5 900,35 C1100,55 1280,15 1440,40 L1440,70 L0,70 Z" fill="var(--bg)"/>
+  </svg>
+</div>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="inner">
+    <div class="text-center fi">
+      <p class="section-eyebrow">Voice</p>
+      <h2 class="section-title">参加者の<span class="hl">声</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fi delay-1">
+        <div class="testi-q-mark">"</div>
+        <div class="testi-stars">
+          <span class="material-icons">star</span><span class="material-icons">star</span>
+          <span class="material-icons">star</span><span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+        </div>
+        <p class="testi-text">ずっと発酵食に興味はあったけど、一人ではなかなか続かなくて。教室に来てから毎日の食卓が変わりました。体が軽くなった気がします。</p>
+        <div class="testi-author">
+          <div class="testi-avatar av-a">M.T</div>
+          <div>
+            <div class="testi-name">M.T さん</div>
+            <div class="testi-attr">46歳・主婦 ／ 発酵習慣講座受講中</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fi delay-2">
+        <div class="testi-q-mark">"</div>
+        <div class="testi-stars">
+          <span class="material-icons">star</span><span class="material-icons">star</span>
+          <span class="material-icons">star</span><span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+        </div>
+        <p class="testi-text">少人数で和気あいあいとした雰囲気がとても好きです。先生の話が面白くて、ランチも毎回楽しみにしています。友人を誘って一緒に来るようになりました。</p>
+        <div class="testi-author">
+          <div class="testi-avatar av-b">K.N</div>
+          <div>
+            <div class="testi-name">K.N さん</div>
+            <div class="testi-attr">52歳・会社員 ／ 麹体験講座から継続受講</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fi delay-3">
+        <div class="testi-q-mark">"</div>
+        <div class="testi-stars">
+          <span class="material-icons">star</span><span class="material-icons">star</span>
+          <span class="material-icons">star</span><span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+        </div>
+        <p class="testi-text">お持ち帰りの塩麹が完成した時の嬉しさといったら！自分で作ったものを毎日料理に使えるのが嬉しくて、気づいたら腸の調子も整ってきました。</p>
+        <div class="testi-author">
+          <div class="testi-avatar av-c">Y.F</div>
+          <div>
+            <div class="testi-name">Y.F さん</div>
+            <div class="testi-attr">49歳・パート ／ 季節の発酵講座も受講</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave -->
+<div class="wave" style="background:var(--bg)">
+  <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,45 C240,10 500,65 800,30 C1000,10 1220,55 1440,25 L1440,70 L0,70 Z" fill="var(--white)"/>
+  </svg>
+</div>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="inner">
+    <div class="text-center fi">
+      <p class="section-eyebrow">FAQ</p>
+      <h2 class="section-title">よくある<span class="hl">ご質問</span></h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item fi delay-1">
+        <div class="faq-q">
+          <div class="faq-q-icon">Q</div>
+          <div class="faq-q-text">発酵食品や麹がまったく初めてでも参加できますか？</div>
+        </div>
+        <div class="faq-a">もちろんです。麹体験講座は「麹って何？」というところから丁寧に説明します。難しい知識は一切不要です。まずは気軽に体験にいらしてください。</div>
+      </div>
+      <div class="faq-item fi delay-2">
+        <div class="faq-q">
+          <div class="faq-q-icon">Q</div>
+          <div class="faq-q-text">教室の場所はどこですか？</div>
+        </div>
+        <div class="faq-a">富山市内での開催です。お申し込みいただいた方に詳細な場所をご案内します。お車でのご来場が便利です。</div>
+      </div>
+      <div class="faq-item fi delay-3">
+        <div class="faq-q">
+          <div class="faq-q-icon">Q</div>
+          <div class="faq-q-text">当日の持ち物は何が必要ですか？</div>
+        </div>
+        <div class="faq-a">エプロン、手拭きタオル、筆記用具、お持ち帰り用の袋（スーパーの袋で構いません）をご持参ください。その他の道具・材料はすべてご用意しています。</div>
+      </div>
+      <div class="faq-item fi delay-4">
+        <div class="faq-q">
+          <div class="faq-q-icon">Q</div>
+          <div class="faq-q-text">予約方法とお支払い方法を教えてください。</div>
+        </div>
+        <div class="faq-a">このページ下部の予約フォームからお申し込みください。お支払いは当日の現金、または事前の銀行振込に対応しています。定員6名の少人数制のため、お早めのご予約をおすすめします。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="cta" style="padding:0">
+  <div class="cta-wave">
+    <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--white)">
+      <path d="M0,30 C360,65 720,5 1080,40 C1260,55 1360,20 1440,35 L1440,70 L0,70 Z" fill="#3D1F0E"/>
+    </svg>
+  </div>
+  <div class="cta-body">
+    <div class="cta-blob cta-blob-1"></div>
+    <div class="cta-blob cta-blob-2"></div>
+    <div class="cta-inner">
+      <p class="cta-eyebrow fi">Reservation</p>
+      <h2 class="cta-h2 fi delay-1"><span class="hl">発酵のある暮らし</span>を<br>一緒に始めませんか？</h2>
+      <p class="cta-sub fi delay-2">定員6名の少人数制です。気になった今がはじめ時。<br>次回レッスンのご予約・お問い合わせはこちらからどうぞ。</p>
+      <a href="#" class="btn-cta fi delay-3">
+        <span class="material-icons">calendar_month</span>
+        次回レッスンを予約する
+      </a>
+      <p class="cta-note fi delay-4">お気軽にお問い合わせください。定員に達した場合はキャンセル待ちのご案内をします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">ふくろうの台所<span>　～糀のある暮らし～</span></div>
+        <p class="footer-desc">発酵食の知恵と、食で人を喜ばせる技術を。上級麹士・薬膳麹士が富山で開く、小さな発酵教室です。</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Menu</div>
+        <div class="footer-links">
+          <a href="#about">教室について</a>
+          <a href="#features">選ばれる理由</a>
+          <a href="#services">講座一覧・料金</a>
+          <a href="#flow">体験の流れ</a>
+          <a href="#faq">よくある質問</a>
+          <a href="#cta">ご予約・お問い合わせ</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Lessons</div>
+        <div class="footer-links">
+          <a href="#services">麹体験講座　¥4,500〜</a>
+          <a href="#services">発酵習慣講座　¥5,500〜</a>
+          <a href="#services">季節の発酵講座　¥6,000</a>
+          <a href="#services">発酵マスター集中講座　¥25,000</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 ふくろうの台所 ～糀のある暮らし～ All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll progress bar + Nav scroll
+  const scrollBar = document.getElementById('scrollBar');
+  const mainNav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    scrollBar.style.width = pct + '%';
+    mainNav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Intersection Observer for fade-in
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = Array.from(document.querySelectorAll('.fi'));
+    const show = el => el.classList.add('visible');
+    if (!('IntersectionObserver' in window)) { items.forEach(show); return; }
+    const io = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { show(entry.target); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.06 });
+    items.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.92) show(el);
+      else io.observe(el);
+    });
+  });
+</script>
+</body>
+</html>
