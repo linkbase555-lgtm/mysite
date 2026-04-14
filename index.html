@@ -168,15 +168,20 @@
     #hero {
       min-height: 100vh;
       display: flex; align-items: center;
-      background: linear-gradient(135deg, #3D1F0E 0%, #6B3520 45%, #C96B3C 100%);
+      background: url('images/hero.jpg') center / cover no-repeat;
       position: relative; overflow: hidden;
       padding-top: 80px;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(40,18,6,0.90) 0%, rgba(90,40,15,0.80) 45%, rgba(180,80,30,0.65) 100%);
     }
     .hero-blob {
       position: absolute; border-radius: 50%;
       filter: blur(90px); opacity: 0.16;
       animation: blobFloat 10s ease-in-out infinite;
-      pointer-events: none;
+      pointer-events: none; z-index: 2;
     }
     .hero-blob-1 { width: 520px; height: 520px; background: #E8A87A; top: -120px; right: -100px; animation-delay: 0s; }
     .hero-blob-2 { width: 360px; height: 360px; background: #F5D4B0; bottom: -60px; left: 8%; animation-delay: -3.5s; }
@@ -379,7 +384,7 @@
     .about-visual-col { position: relative; }
     .about-shape {
       width: 100%; padding-bottom: 108%;
-      background: linear-gradient(145deg, #E8A87A 0%, #C96B3C 55%, #8B3A1A 100%);
+      background: url('images/about.jpg') center top / cover no-repeat;
       border-radius: 42% 58% 58% 42% / 42% 42% 58% 58%;
       position: relative; overflow: hidden;
       box-shadow: var(--shadow-lg);
@@ -899,11 +904,7 @@
     <div class="about-grid">
       <!-- Visual -->
       <div class="about-visual-col fi">
-        <div class="about-shape">
-          <div class="about-shape-dots"></div>
-          <div class="about-shape-circle asc-1"></div>
-          <div class="about-shape-circle asc-2"></div>
-        </div>
+        <div class="about-shape"></div>
         <div class="about-float af-1">
           <span class="material-icons">restaurant</span>
           <div>
